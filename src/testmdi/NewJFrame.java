@@ -2,23 +2,61 @@ package testmdi;
 
 import java.awt.Color;
 import java.awt.Cursor;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.security.auth.callback.ConfirmationCallback;
+import javax.swing.Action;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 public class NewJFrame extends javax.swing.JFrame {
+
     Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+
     /**
      * Creates new form NewJFrame
      */
     public NewJFrame() {
         initComponents();
+        setLocationRelativeTo(null);
+        dongho();
     }
 
-    
+    private void setButtonMouseEnter(JLabel label) {
+        label.setBackground(Color.WHITE);
+        label.setCursor(cursor);
+    }
+
+    private void setButtonMouseExit(JLabel label) {
+        label.setBackground(new Color(0, 204, 102));
+    }
+    private void setButtonMousePressed(JLabel label) {
+        label.setBackground(Color.black);
+        label.setForeground(Color.white);
+    }
+    private void setButtonMouseReleased(JLabel label) {
+       label.setBackground(new Color(0, 204, 102));
+       label.setForeground(Color.black);
+    }
+
+    void dongho() {
+        new Timer(1000, new ActionListener() {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblDongHo.setText(sdf.format(new Date()));
+            }
+        }).start();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblSanPham = new javax.swing.JLabel();
@@ -31,8 +69,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-
-        jLabel2.setText("jLabel2");
+        lblDongHo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -41,7 +78,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel2.setForeground(new java.awt.Color(0, 204, 102));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         lblSanPham.setBackground(new java.awt.Color(0, 204, 102));
         lblSanPham.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -56,6 +93,12 @@ public class NewJFrame extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblSanPhamMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblSanPhamMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblSanPhamMouseReleased(evt);
+            }
         });
 
         lblThongKe.setBackground(new java.awt.Color(0, 204, 102));
@@ -66,11 +109,20 @@ public class NewJFrame extends javax.swing.JFrame {
         lblThongKe.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lblThongKe.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblThongKeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblThongKeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblThongKeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblThongKeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblThongKeMouseReleased(evt);
             }
         });
 
@@ -87,6 +139,12 @@ public class NewJFrame extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblNhanVienMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblNhanVienMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblNhanVienMouseReleased(evt);
+            }
         });
 
         lblHoaDon.setBackground(new java.awt.Color(0, 204, 102));
@@ -102,6 +160,12 @@ public class NewJFrame extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoaDonMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblHoaDonMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblHoaDonMouseReleased(evt);
+            }
         });
 
         lblDangXuat.setBackground(new java.awt.Color(0, 204, 102));
@@ -111,11 +175,20 @@ public class NewJFrame extends javax.swing.JFrame {
         lblDangXuat.setText("Đăng Xuất");
         lblDangXuat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDangXuatMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblDangXuatMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblDangXuatMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblDangXuatMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblDangXuatMouseReleased(evt);
             }
         });
 
@@ -132,6 +205,12 @@ public class NewJFrame extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblDoiMatKhauMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblDoiMatKhauMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblDoiMatKhauMouseReleased(evt);
+            }
         });
 
         lblKhachHang.setBackground(new java.awt.Color(0, 204, 102));
@@ -146,6 +225,12 @@ public class NewJFrame extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblKhachHangMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblKhachHangMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblKhachHangMouseReleased(evt);
             }
         });
 
@@ -177,10 +262,10 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(lblDoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 390));
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -204,18 +289,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 180, 82));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1070, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-
+        jDesktopPane1.setLayout(new javax.swing.BoxLayout(jDesktopPane1, javax.swing.BoxLayout.LINE_AXIS));
         jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 1070, 640));
+
+        lblDongHo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblDongHo.setForeground(new java.awt.Color(255, 255, 255));
+        lblDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Square Clock.png"))); // NOI18N
+        lblDongHo.setText("00:00:00 AM");
+        lblDongHo.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(0, 255, 204)));
+        jPanel1.add(lblDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 200, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 640));
 
@@ -224,79 +307,135 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void lblThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseEntered
         // TODO add your handling code here:
-        lblThongKe.setBackground(Color.WHITE);
-        lblThongKe.setCursor(cursor);
+        setButtonMouseEnter(lblThongKe);
     }//GEN-LAST:event_lblThongKeMouseEntered
 
     private void lblSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseEntered
         // TODO add your handling code here:
-        lblSanPham.setBackground(Color.WHITE);
-        lblSanPham.setCursor(cursor);
+       setButtonMouseEnter(lblSanPham);
     }//GEN-LAST:event_lblSanPhamMouseEntered
 
     private void lblNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseEntered
         // TODO add your handling code here:
-        lblNhanVien.setBackground(Color.WHITE);
-        lblNhanVien.setCursor(cursor);
+       setButtonMouseEnter(lblNhanVien);
     }//GEN-LAST:event_lblNhanVienMouseEntered
 
     private void lblHoaDonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseEntered
         // TODO add your handling code here:
-        lblHoaDon.setBackground(Color.WHITE);
-        lblHoaDon.setCursor(cursor);
+        setButtonMouseEnter(lblHoaDon);
     }//GEN-LAST:event_lblHoaDonMouseEntered
 
     private void lblKhachHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseEntered
-        // TODO add your handling code here:
-        lblKhachHang.setBackground(Color.WHITE);
-        lblKhachHang.setCursor(cursor);
+        setButtonMouseEnter(lblKhachHang);
     }//GEN-LAST:event_lblKhachHangMouseEntered
 
     private void lblDoiMatKhauMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMatKhauMouseEntered
-        // TODO add your handling code here:
-        lblDoiMatKhau.setBackground(Color.WHITE);
-        lblDoiMatKhau.setCursor(cursor);
+       setButtonMouseEnter(lblDoiMatKhau);
     }//GEN-LAST:event_lblDoiMatKhauMouseEntered
 
     private void lblDangXuatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseEntered
         // TODO add your handling code here:
-        lblDangXuat.setBackground(Color.WHITE);
-        lblDangXuat.setCursor(cursor);
+        setButtonMouseEnter(lblDangXuat);
     }//GEN-LAST:event_lblDangXuatMouseEntered
 
     private void lblDangXuatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseExited
-        lblDangXuat.setBackground(new Color(0,204,102));
+        setButtonMouseExit(lblDangXuat);
     }//GEN-LAST:event_lblDangXuatMouseExited
 
     private void lblDoiMatKhauMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMatKhauMouseExited
         // TODO add your handling code here:
-        lblDoiMatKhau.setBackground(new Color(0,204,102));
+       setButtonMouseExit(lblDoiMatKhau);
     }//GEN-LAST:event_lblDoiMatKhauMouseExited
 
     private void lblKhachHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseExited
         // TODO add your handling code here:
-        lblKhachHang.setBackground(new Color(0,204,102));
+       setButtonMouseExit(lblKhachHang);
     }//GEN-LAST:event_lblKhachHangMouseExited
 
     private void lblHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseExited
-        // TODO add your handling code here:
-        lblHoaDon.setBackground(new Color(0,204,102));
+        setButtonMouseExit(lblHoaDon);
     }//GEN-LAST:event_lblHoaDonMouseExited
 
     private void lblNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseExited
-        // TODO add your handling code here:
-        lblNhanVien.setBackground(new Color(0,204,102));
+        setButtonMouseExit(lblNhanVien);
     }//GEN-LAST:event_lblNhanVienMouseExited
 
     private void lblSanPhamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseExited
-        // TODO add your handling code here:
-        lblSanPham.setBackground(new Color(0,204,102));
+        setButtonMouseExit(lblSanPham);
     }//GEN-LAST:event_lblSanPhamMouseExited
 
     private void lblThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseExited
-        // TODO add your handling code here:
-        lblThongKe.setBackground(new Color(0,204,102));
+        setButtonMouseExit(lblThongKe);
     }//GEN-LAST:event_lblThongKeMouseExited
+
+    private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
+//        int choose = JOptionPane.showConfirmDialog(this, "Are you want logout?", "Thông báo", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+//        if (choose == JOptionPane.YES_OPTION) {
+//            LoginFrame lgf = new LoginFrame();
+//            this.dispose();
+//            lgf.setVisible(true);
+//        }
+    }//GEN-LAST:event_lblDangXuatMouseClicked
+
+    private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
+
+    }//GEN-LAST:event_lblThongKeMouseClicked
+
+    private void lblThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMousePressed
+        setButtonMousePressed(lblThongKe);
+    }//GEN-LAST:event_lblThongKeMousePressed
+
+    private void lblThongKeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseReleased
+        setButtonMouseReleased(lblThongKe);
+    }//GEN-LAST:event_lblThongKeMouseReleased
+
+    private void lblSanPhamMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMousePressed
+        setButtonMousePressed(lblSanPham);
+    }//GEN-LAST:event_lblSanPhamMousePressed
+
+    private void lblSanPhamMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseReleased
+        setButtonMouseReleased(lblSanPham);
+    }//GEN-LAST:event_lblSanPhamMouseReleased
+
+    private void lblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMousePressed
+        setButtonMousePressed(lblNhanVien);
+    }//GEN-LAST:event_lblNhanVienMousePressed
+
+    private void lblNhanVienMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseReleased
+        setButtonMouseReleased(lblNhanVien);
+    }//GEN-LAST:event_lblNhanVienMouseReleased
+
+    private void lblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMousePressed
+        setButtonMousePressed(lblHoaDon);
+    }//GEN-LAST:event_lblHoaDonMousePressed
+
+    private void lblHoaDonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseReleased
+              setButtonMouseReleased(lblHoaDon);
+    }//GEN-LAST:event_lblHoaDonMouseReleased
+
+    private void lblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMousePressed
+        setButtonMousePressed(lblKhachHang);
+    }//GEN-LAST:event_lblKhachHangMousePressed
+
+    private void lblKhachHangMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseReleased
+      setButtonMouseReleased(lblKhachHang);
+    }//GEN-LAST:event_lblKhachHangMouseReleased
+
+    private void lblDoiMatKhauMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMatKhauMousePressed
+       setButtonMousePressed(lblDoiMatKhau);
+    }//GEN-LAST:event_lblDoiMatKhauMousePressed
+
+    private void lblDoiMatKhauMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMatKhauMouseReleased
+       setButtonMouseReleased(lblDoiMatKhau);
+    }//GEN-LAST:event_lblDoiMatKhauMouseReleased
+
+    private void lblDangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMousePressed
+       setButtonMousePressed(lblDangXuat);
+    }//GEN-LAST:event_lblDangXuatMousePressed
+
+    private void lblDangXuatMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseReleased
+        setButtonMouseReleased(lblDangXuat);
+    }//GEN-LAST:event_lblDangXuatMouseReleased
 
     /**
      * @param args the command line arguments
@@ -336,12 +475,12 @@ public class NewJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblDangXuat;
     private javax.swing.JLabel lblDoiMatKhau;
+    private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblHoaDon;
     private javax.swing.JLabel lblKhachHang;
     private javax.swing.JLabel lblNhanVien;
